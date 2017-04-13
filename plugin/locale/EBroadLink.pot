@@ -1,0 +1,385 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-13 22:16+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ui.py:182
+msgid " - select action:"
+msgstr ""
+
+#: ui.py:173
+#, python-format
+msgid "%s - %s"
+msgstr ""
+
+#: ui.py:401 ui.py:419
+msgid "( all socket)"
+msgstr ""
+
+#: ui.py:350
+msgid ": socket 1 disabled"
+msgstr ""
+
+#: ui.py:352
+msgid ": socket 1 enabled"
+msgstr ""
+
+#: ui.py:354
+msgid ": socket 1 state unknown"
+msgstr ""
+
+#: ui.py:358
+msgid ": socket 2 disabled"
+msgstr ""
+
+#: ui.py:360
+msgid ": socket 2 enabled"
+msgstr ""
+
+#: ui.py:362
+msgid ": socket 2 state unknown"
+msgstr ""
+
+#: ui.py:366
+msgid ": socket 3 disabled"
+msgstr ""
+
+#: ui.py:368
+msgid ": socket 3 enabled"
+msgstr ""
+
+#: ui.py:370
+msgid ": socket 3 state unknown"
+msgstr ""
+
+#: ui.py:374
+msgid ": socket 4 disabled"
+msgstr ""
+
+#: ui.py:376
+msgid ": socket 4 enabled"
+msgstr ""
+
+#: ui.py:378
+msgid ": socket 4 state unknown"
+msgstr ""
+
+#: ui.py:382
+msgid ": socket disabled"
+msgstr ""
+
+#: ui.py:384
+msgid ": socket enabled"
+msgstr ""
+
+#: ui.py:386
+msgid ": socket state unknown"
+msgstr ""
+
+#: broadlinkedit.py:237
+msgid ""
+"A BroadLink entry with this name already exists!\n"
+"Update existing entry and continue?"
+msgstr ""
+
+#: broadlinkedit.py:24
+msgid "A1"
+msgstr ""
+
+#: ui.py:115
+msgid "Add/Edit"
+msgstr ""
+
+#: ui.py:129 ui.py:134
+msgid "Add/Edit item"
+msgstr ""
+
+#: ui.py:453
+msgid "Air quality"
+msgstr ""
+
+#: broadlinkedit.py:239
+msgid "Are you sure you want to add this BroadLink smart?\n"
+msgstr ""
+
+#: ui.py:160
+#, python-format
+msgid "BouqDn: %s"
+msgstr ""
+
+#: broadlinkedit.py:75
+msgid "BouqDown"
+msgstr ""
+
+#: ui.py:230
+#, python-format
+msgid "BouqUp for %s, BouqDn for %s"
+msgstr ""
+
+#: broadlinkedit.py:21 broadlinkut.py:17
+msgid "BroadLink"
+msgstr ""
+
+#: ui.py:524
+msgid "BroadLink device has been removed..."
+msgstr ""
+
+#: broadlinkedit.py:83
+msgid "Cancel"
+msgstr ""
+
+#: ui.py:200 ui.py:227
+msgid "Check sensors"
+msgstr ""
+
+#: broadlinkedit.py:27
+msgid "Check sensors (only A1)"
+msgstr ""
+
+#: ui.py:202 ui.py:229
+msgid "Check temperature"
+msgstr ""
+
+#: broadlinkedit.py:27
+msgid "Check temperature (only RM2)"
+msgstr ""
+
+#: ui.py:114
+msgid "Close"
+msgstr ""
+
+#: ui.py:128 ui.py:133
+msgid "Close plugin"
+msgstr ""
+
+#: broadlinkedit.py:76
+msgid "Closing plugin (BouqDown/BouqUp)"
+msgstr ""
+
+#: ui.py:245 ui.py:256 ui.py:263 ui.py:270 ui.py:280
+#, python-format
+msgid "Command not support %s."
+msgstr ""
+
+#: ui.py:116
+msgid "Delete"
+msgstr ""
+
+#: ui.py:130
+msgid "Delete selected item"
+msgstr ""
+
+#: ui.py:462
+#, python-format
+msgid ""
+"Device %s\n"
+"\n"
+"%s\n"
+msgstr ""
+
+#: ui.py:189 ui.py:225 ui.py:392 ui.py:398 ui.py:419
+msgid "Disable power"
+msgstr ""
+
+#: broadlinkedit.py:27
+msgid "Disable power (only SP1/SP2/SP3/MP1)"
+msgstr ""
+
+#: ui.py:195 ui.py:425
+msgid "Disable power (socket 1)"
+msgstr ""
+
+#: ui.py:196 ui.py:428
+msgid "Disable power (socket 2)"
+msgstr ""
+
+#: ui.py:197 ui.py:431
+msgid "Disable power (socket 3)"
+msgstr ""
+
+#: ui.py:198 ui.py:434
+msgid "Disable power (socket 4)"
+msgstr ""
+
+#: ui.py:516
+#, python-format
+msgid "Do You want remove BroadLink device: %s?"
+msgstr ""
+
+#: ui.py:109 ui.py:166
+msgid "E-BroadLink"
+msgstr ""
+
+#: broadlinkedit.py:126
+msgid "E-BroadLink configuration:"
+msgstr ""
+
+#: broadlinkedit.py:104
+#, python-format
+msgid "E-BroadLink: %s"
+msgstr ""
+
+#: ui.py:188 ui.py:223 ui.py:389 ui.py:395 ui.py:401
+msgid "Enable power"
+msgstr ""
+
+#: broadlinkedit.py:27
+msgid "Enable power (only SP1/SP2/SP3/MP1)"
+msgstr ""
+
+#: ui.py:191 ui.py:407
+msgid "Enable power (socket 1)"
+msgstr ""
+
+#: ui.py:192 ui.py:410
+msgid "Enable power (socket 2)"
+msgstr ""
+
+#: ui.py:193 ui.py:413
+msgid "Enable power (socket 3)"
+msgstr ""
+
+#: ui.py:194 ui.py:416
+msgid "Enable power (socket 4)"
+msgstr ""
+
+#: broadlinkedit.py:86
+msgid "Get MAC"
+msgstr ""
+
+#: broadlinkedit.py:102
+msgid "Get MAC of running device"
+msgstr ""
+
+#: ui.py:445
+msgid "Humidity"
+msgstr ""
+
+#: broadlinkedit.py:65
+msgid "IP"
+msgstr ""
+
+#: ui.py:139
+msgid "IP:"
+msgstr ""
+
+#: ui.py:449
+msgid "Light"
+msgstr ""
+
+#: broadlinkedit.py:71
+msgid "MAC"
+msgstr ""
+
+#: ui.py:140
+msgid "MAC:"
+msgstr ""
+
+#: broadlinkedit.py:24
+msgid "MP1"
+msgstr ""
+
+#: broadlinkedit.py:68
+msgid "Name"
+msgstr ""
+
+#: ui.py:176
+msgid "Network overview BroadLink devices..."
+msgstr ""
+
+#: broadlinkedit.py:101
+msgid "Network overview broadlink devices"
+msgstr ""
+
+#: ui.py:294
+#, python-format
+msgid "No response from %s."
+msgstr ""
+
+#: ui.py:457
+msgid "Noise"
+msgstr ""
+
+#: broadlinkedit.py:141
+msgid ""
+"Not apply!\n"
+"BroadLink device type is unknown!"
+msgstr ""
+
+#: broadlinkedit.py:84
+msgid "Ok"
+msgstr ""
+
+#: broadlinkedit.py:85 ui.py:117 ui.py:131
+msgid "Overview broadlink devices"
+msgstr ""
+
+#: ui.py:355 ui.py:363 ui.py:371 ui.py:379 ui.py:387
+msgid "Power status"
+msgstr ""
+
+#: plugin.py:11
+msgid "Production BroadLink management"
+msgstr ""
+
+#: broadlinkedit.py:24
+msgid "RM2"
+msgstr ""
+
+#: broadlinkedit.py:24
+msgid "SP1"
+msgstr ""
+
+#: broadlinkedit.py:24
+msgid "SP2/SP3"
+msgstr ""
+
+#: broadlinkedit.py:164
+msgid "Select device for use:"
+msgstr ""
+
+#: ui.py:135
+msgid "Select option"
+msgstr ""
+
+#: ui.py:186 ui.py:220
+msgid "Status power"
+msgstr ""
+
+#: broadlinkedit.py:66
+msgid "System"
+msgstr ""
+
+#: ui.py:441 ui.py:461
+msgid "Temperature"
+msgstr ""
+
+#: ui.py:340
+msgid "Unknown error!\n"
+msgstr ""
+
+#: ui.py:123 ui.py:212
+msgid "User defined..."
+msgstr ""
+
+#: broadlinkedit.py:251
+msgid "Your BroadLink has been updated..."
+msgstr ""
+
+#: broadlinkedit.py:273
+msgid "Your new BroadLink smart has been added."
+msgstr ""
