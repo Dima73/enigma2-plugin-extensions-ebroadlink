@@ -57,7 +57,7 @@ msgid ": socket 4 state unknown"
 msgstr ": розетка 4 - состояние неизвестно"
 
 msgid ": socket disabled"
-msgstr ": розетка 4 отключена"
+msgstr ": розетка отключена"
 
 msgid ": socket enabled"
 msgstr ": розетка включена"
