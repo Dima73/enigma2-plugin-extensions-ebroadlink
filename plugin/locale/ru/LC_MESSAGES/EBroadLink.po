@@ -1,0 +1,290 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Project-Id-Version: EBroadLink\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Dimitrij <Dima-73@inbox.lv>\n"
+"Language-Team: openPli dima-73@inbox.lv\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.1\n"
+
+msgid " - select action:"
+msgstr " - выбрать действие:"
+
+msgid "%s - %s"
+msgstr "%s - %s"
+
+msgid "( all socket)"
+msgstr "( все розетки)"
+
+msgid ": socket 1 disabled"
+msgstr ": розетка 1 отключена"
+
+msgid ": socket 1 enabled"
+msgstr ": розетка 1 включена"
+
+msgid ": socket 1 state unknown"
+msgstr ": розетка 1 - состояние неизвестно"
+
+msgid ": socket 2 disabled"
+msgstr ": розетка 2 отключена"
+
+msgid ": socket 2 enabled"
+msgstr ": розетка 2 включена"
+
+msgid ": socket 2 state unknown"
+msgstr ": розетка 2 - состояние неизвестно"
+
+msgid ": socket 3 disabled"
+msgstr ": розетка 1 отключена"
+
+msgid ": socket 3 enabled"
+msgstr ": розетка 3 включена"
+
+msgid ": socket 3 state unknown"
+msgstr ": розетка 3 - состояние неизвестно"
+
+msgid ": socket 4 disabled"
+msgstr ": розетка 4 отключена"
+
+msgid ": socket 4 enabled"
+msgstr ": розетка 4 включена"
+
+msgid ": socket 4 state unknown"
+msgstr ": розетка 4 - состояние неизвестно"
+
+msgid ": socket disabled"
+msgstr ": розетка 4 отключена"
+
+msgid ": socket enabled"
+msgstr ": розетка включена"
+
+msgid ": socket state unknown"
+msgstr ": розетка - состояние неизвестно"
+
+msgid ""
+"A BroadLink entry with this name already exists!\n"
+"Update existing entry and continue?"
+msgstr ""
+"Устройство BroadLink с таким именем уже существует!\n"
+"Обновить текущие настройки и продолжить?"
+
+msgid "A1"
+msgstr "A1"
+
+msgid "Add/Edit"
+msgstr "Доб./Редак."
+
+msgid "Add/Edit item"
+msgstr "Добавить/редактировать запись"
+
+msgid "Air quality"
+msgstr "Качество воздуха"
+
+msgid "Are you sure you want to add this BroadLink smart?\n"
+msgstr "Вы действительно хотите добавить это устройство BroadLink?\n"
+
+msgid "BouqDn: %s"
+msgstr "кнопка B-: %s"
+
+msgid "BouqDown"
+msgstr "кнопка B-"
+
+msgid "BouqUp for %s, BouqDn for %s"
+msgstr "B+ для %s, B- для %s"
+
+msgid "BroadLink"
+msgstr "BroadLink"
+
+msgid "BroadLink device has been removed..."
+msgstr "Устройство BroadLink было удалено..."
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "Check sensors"
+msgstr "Проверка сенсоров"
+
+msgid "Check sensors (only A1)"
+msgstr "Проверка сенсоров (только A1)"
+
+msgid "Check temperature"
+msgstr "Проверка температуры"
+
+msgid "Check temperature (only RM2)"
+msgstr "Проверка температуры (только RM2)"
+
+msgid "Close"
+msgstr "Закрыть"
+
+msgid "Close plugin"
+msgstr "Закрыть плагин"
+
+msgid "Closing plugin (BouqDown/BouqUp)"
+msgstr "Закрывать плагин после (B+/B-)"
+
+msgid "Command not support %s."
+msgstr "Команда не поддерживается %s."
+
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "Delete selected item"
+msgstr "Удалить выбранную запись"
+
+msgid ""
+"Device %s\n"
+"\n"
+"%s\n"
+msgstr ""
+"Устройство %s\n"
+"\n"
+"%s\n"
+
+msgid "Disable power"
+msgstr "Отключить питание"
+
+msgid "Disable power (only SP1/SP2/SP3/MP1)"
+msgstr "Отключить питание (только SP1/SP2/SP3/MP1)"
+
+msgid "Disable power (socket 1)"
+msgstr "Отключить питание (розетка 2)"
+
+msgid "Disable power (socket 2)"
+msgstr "Отключить питание (розетка 2)"
+
+msgid "Disable power (socket 3)"
+msgstr "Отключить питание (розетка 3)"
+
+msgid "Disable power (socket 4)"
+msgstr "Отключить питание (розетка 4)"
+
+msgid "Do You want remove BroadLink device: %s?"
+msgstr "Вы действительно хотите удалить устойство BroadLink: %s?"
+
+msgid "E-BroadLink"
+msgstr "E-BroadLink"
+
+msgid "E-BroadLink configuration:"
+msgstr "E-BroadLink конфигурация:"
+
+msgid "E-BroadLink: %s"
+msgstr "E-BroadLink: %s"
+
+msgid "Enable power"
+msgstr "Включить питание"
+
+msgid "Enable power (only SP1/SP2/SP3/MP1)"
+msgstr "Включить питание (только SP1/SP2/SP3/MP1)"
+
+msgid "Enable power (socket 1)"
+msgstr "Включить питание (розетка 2)"
+
+msgid "Enable power (socket 2)"
+msgstr "Включить питание (розетка 2)"
+
+msgid "Enable power (socket 3)"
+msgstr "Включить питание (розетка 3)"
+
+msgid "Enable power (socket 4)"
+msgstr "Включить питание (розетка 4)"
+
+msgid "Get MAC"
+msgstr "Получить MAC"
+
+msgid "Get MAC of running device"
+msgstr "Получить MAC от работающего устройства"
+
+msgid "Humidity"
+msgstr "Влажность"
+
+msgid "IP"
+msgstr "IP"
+
+msgid "IP:"
+msgstr "IP:"
+
+msgid "Light"
+msgstr "Свет"
+
+msgid "MAC"
+msgstr "MAC"
+
+msgid "MAC:"
+msgstr "MAC:"
+
+msgid "MP1"
+msgstr "MP1"
+
+msgid "Name"
+msgstr "Имя"
+
+msgid "Network overview BroadLink devices..."
+msgstr "Обзор сети для устройств BroadLink..."
+
+msgid "Network overview broadlink devices"
+msgstr "Обзор сети для устройств BroadLink"
+
+msgid "No response from %s."
+msgstr "Нет овета от %s."
+
+msgid "Noise"
+msgstr "Шум"
+
+msgid ""
+"Not apply!\n"
+"BroadLink device type is unknown!"
+msgstr ""
+"Не применяем!\n"
+"Тип устройства BroadLink неизвестен!"
+
+msgid "Ok"
+msgstr "Ок"
+
+msgid "Overview broadlink devices"
+msgstr "Обзор устройств BroadLink"
+
+msgid "Power status"
+msgstr "Статус питания"
+
+msgid "Production BroadLink management"
+msgstr "Управление устройствами BroadLink"
+
+msgid "RM2"
+msgstr "RM2"
+
+msgid "SP1"
+msgstr "SP1"
+
+msgid "SP2/SP3"
+msgstr "SP2/SP3"
+
+msgid "Select device for use:"
+msgstr "Выбор устройста для использования:"
+
+msgid "Select option"
+msgstr "Выбор действия"
+
+msgid "Status power"
+msgstr "Статус питания"
+
+msgid "System"
+msgstr "Система"
+
+msgid "Temperature"
+msgstr "Температура"
+
+msgid "Unknown error!\n"
+msgstr "Неизвестная ошибка!\n"
+
+msgid "User defined..."
+msgstr "Задано пользователем..."
+
+msgid "Your BroadLink has been updated..."
+msgstr "Ваши настройки устройства BroadLink были обновлены..."
+
+msgid "Your new BroadLink smart has been added."
+msgstr "Ваше новое устройство BroadLink было добавлено..."
