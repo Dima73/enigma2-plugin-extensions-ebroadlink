@@ -221,6 +221,11 @@ class device:
     packet[0x31] = self.id[1]
     packet[0x32] = self.id[2]
     packet[0x33] = self.id[3]
+    
+    # pad the payload for AES encryption
+    if len(payload)>0:
+      numpad=(len(payload)//16+1)*16
+      payload=payload.ljust(numpad,"\x00")
 
     checksum = 0xbeaf
     for i in range(len(payload)):
