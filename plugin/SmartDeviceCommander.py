@@ -18,6 +18,8 @@ def gendevice(devtype, host, mac):
     return sp2(host=host, mac=mac)
   elif devtype == 0x753e: # SP3
     return sp2(host=host, mac=mac)
+  elif devtype == 0x947a or devtype == 0x9479: # SP3S
+    return sp2(host=host, mac=mac)
   elif devtype == 0x2728: # SPMini2
     return sp2(host=host, mac=mac)
   elif devtype == 0x2733 or devtype == 0x273e: # OEM branded SPMini
@@ -46,7 +48,7 @@ def gendevice(devtype, host, mac):
     return rm(host=host, mac=mac)
   elif devtype == 0x2714: # A1
     return a1(host=host, mac=mac)
-  elif devtype == 0x4EB5: # MP1
+  elif devtype == 0x4EB5 or devtype == 0x4ef7: # MP1
     return mp1(host=host, mac=mac)
   else:
     return device(host=host, mac=mac)
@@ -225,7 +227,7 @@ class device:
     # pad the payload for AES encryption
     if len(payload)>0:
       numpad=(len(payload)//16+1)*16
-      payload=payload.ljust(numpad,"\x00")
+      payload=payload.ljust(numpad,b"\x00")
 
     checksum = 0xbeaf
     for i in range(len(payload)):
@@ -370,6 +372,17 @@ class sp2(device):
       else:
         state = bool(ord(payload[0x4]))
     return state
+
+  def get_energy(self):
+    packet = bytearray([8, 0, 254, 1, 5, 1, 0, 0, 0, 45])
+    response = self.send_packet(0x6a, packet)
+    err = response[0x22] | (response[0x23] << 8)
+    energy = None
+    if err == 0:
+      payload = self.decrypt(bytes(response[0x38:]))
+      energy = int(hex(ord(payload[7]) * 256 + ord(payload[6]))[2:]) + int(hex(ord(payload[5]))[2:])/100.0
+    return energy
+
 
 class a1(device):
   def __init__ (self, host, mac):
