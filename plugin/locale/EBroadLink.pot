@@ -383,3 +383,15 @@ msgstr ""
 #: broadlinkedit.py:273
 msgid "Your new BroadLink smart has been added."
 msgstr ""
+
+msgid "Current energy"
+msgstr ""
+
+msgid "unknown"
+msgstr ""
+
+msgid "Command not support!"
+msgstr ""
+
+msgid "Current energy only SP2/SP3S"
+msgstr ""

@@ -9,7 +9,7 @@ msgstr ""
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.1\n"
+"X-Generator: Poedit 2.0.4\n"
 
 msgid " - select action:"
 msgstr " - выбрать действие:"
@@ -229,7 +229,7 @@ msgid "Network overview broadlink devices"
 msgstr "Обзор сети для устройств BroadLink"
 
 msgid "No response from %s."
-msgstr "Нет овета от %s."
+msgstr "Нет ответа от %s."
 
 msgid "Noise"
 msgstr "Шум"
@@ -288,3 +288,15 @@ msgstr "Ваши настройки устройства BroadLink были об
 
 msgid "Your new BroadLink smart has been added."
 msgstr "Ваше новое устройство BroadLink было добавлено..."
+
+msgid "Current energy"
+msgstr "Текущая мощность"
+
+msgid "unknown"
+msgstr "неизвестно"
+
+msgid "Command not support!"
+msgstr "Команда не поддерживается!"
+
+msgid "Current energy only SP2/SP3S"
+msgstr "Текущая мощность только SP2/SP3S"

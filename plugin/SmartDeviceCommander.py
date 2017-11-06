@@ -9,49 +9,49 @@ import threading
 
 def gendevice(devtype, host, mac):
   if devtype == 0: # SP1
-    return sp1(host=host, mac=mac)
+    return sp1(host=host, mac=mac, devtype=devtype)
   if devtype == 0x2711: # SP2
-    return sp2(host=host, mac=mac)
+    return sp2(host=host, mac=mac, devtype=devtype)
   if devtype == 0x2719 or devtype == 0x7919 or devtype == 0x271a or devtype == 0x791a: # Honeywell SP2
-    return sp2(host=host, mac=mac)
+    return sp2(host=host, mac=mac, devtype=devtype)
   if devtype == 0x2720: # SPMini
-    return sp2(host=host, mac=mac)
+    return sp2(host=host, mac=mac, devtype=devtype)
   elif devtype == 0x753e: # SP3
-    return sp2(host=host, mac=mac)
+    return sp2(host=host, mac=mac, devtype=devtype)
   elif devtype == 0x947a or devtype == 0x9479: # SP3S
-    return sp2(host=host, mac=mac)
+    return sp2(host=host, mac=mac, devtype=devtype)
   elif devtype == 0x2728: # SPMini2
-    return sp2(host=host, mac=mac)
+    return sp2(host=host, mac=mac, devtype=devtype)
   elif devtype == 0x2733 or devtype == 0x273e: # OEM branded SPMini
-    return sp2(host=host, mac=mac)
+    return sp2(host=host, mac=mac, devtype=devtype)
   elif devtype >= 0x7530 and devtype <= 0x7918: # OEM branded SPMini2
-    return sp2(host=host, mac=mac)
+    return sp2(host=host, mac=mac, devtype=devtype)
   elif devtype == 0x2736: # SPMiniPlus
-    return sp2(host=host, mac=mac)
+    return sp2(host=host, mac=mac, devtype=devtype)
   elif devtype == 0x2712: # RM2
-    return rm(host=host, mac=mac)
+    return rm(host=host, mac=mac, devtype=devtype)
   elif devtype == 0x2737: # RM Mini
-    return rm(host=host, mac=mac)
+    return rm(host=host, mac=mac, devtype=devtype)
   elif devtype == 0x273d: # RM Pro Phicomm
-    return rm(host=host, mac=mac)
+    return rm(host=host, mac=mac, devtype=devtype)
   elif devtype == 0x2783: # RM2 Home Plus
-    return rm(host=host, mac=mac)
+    return rm(host=host, mac=mac, devtype=devtype)
   elif devtype == 0x277c: # RM2 Home Plus GDT
-    return rm(host=host, mac=mac)
+    return rm(host=host, mac=mac, devtype=devtype)
   elif devtype == 0x272a: # RM2 Pro Plus
-    return rm(host=host, mac=mac)
+    return rm(host=host, mac=mac, devtype=devtype)
   elif devtype == 0x2787: # RM2 Pro Plus2
-    return rm(host=host, mac=mac)
+    return rm(host=host, mac=mac, devtype=devtype)
   elif devtype == 0x278b: # RM2 Pro Plus BL
-    return rm(host=host, mac=mac)
+    return rm(host=host, mac=mac, devtype=devtype)
   elif devtype == 0x278f: # RM Mini Shate
-    return rm(host=host, mac=mac)
+    return rm(host=host, mac=mac, devtype=devtype)
   elif devtype == 0x2714: # A1
-    return a1(host=host, mac=mac)
+    return a1(host=host, mac=mac, devtype=devtype)
   elif devtype == 0x4EB5 or devtype == 0x4ef7: # MP1
-    return mp1(host=host, mac=mac)
+    return mp1(host=host, mac=mac, devtype=devtype)
   else:
-    return device(host=host, mac=mac)
+    return device(host=host, mac=mac, devtype=devtype)
 
 def discover(timeout=None, local_ip_address=None):
   if local_ip_address is None:
@@ -132,10 +132,11 @@ def discover(timeout=None, local_ip_address=None):
 
 
 class device:
-  def __init__(self, host, mac, timeout=10):
+  def __init__(self, host, mac, devtype=None, timeout=10):
     self.host = host
     self.mac = mac
     self.timeout = timeout
+    self.devtype = devtype
     self.count = random.randrange(0xffff)
     self.key = bytearray([0x09, 0x76, 0x28, 0x34, 0x3f, 0xe9, 0x9e, 0x23, 0x76, 0x5c, 0x15, 0x13, 0xac, 0xcf, 0x8b, 0x02])
     self.iv = bytearray([0x56, 0x2e, 0x17, 0x99, 0x6d, 0x09, 0x3d, 0x28, 0xdd, 0xb3, 0xba, 0x69, 0x5a, 0x2e, 0x6f, 0x58])
@@ -175,7 +176,7 @@ class device:
     payload[0x36] = ord('1')
 
     response = self.send_packet(0x65, payload)
-    if response is None:
+    if response is False:
      return False
 
     enc_payload = response[0x38:]
@@ -238,7 +239,7 @@ class device:
     try:
         payload = aes.encrypt(bytes(payload))
     except:
-        return None
+        return False
     packet[0x34] = checksum & 0xff
     packet[0x35] = checksum >> 8
 
@@ -265,13 +266,13 @@ class device:
           break
         except socket.timeout:
           if (time.time() - starttime) > self.timeout:
-            raise
+            return False
     return bytearray(response[0])
 
 
 class mp1(device):
-  def __init__ (self, host, mac):
-    device.__init__(self, host, mac)
+  def __init__ (self, host, mac, devtype=None):
+    device.__init__(self, host, mac, devtype)
     self.type = "MP1"
 
   def set_power_mask(self, sid_mask, state):
@@ -291,7 +292,7 @@ class mp1(device):
     packet[0x0e] = sid_mask if state else 0
 
     response = self.send_packet(0x6a, packet)
-    if response is None:
+    if response is False:
      return None
     err = response[0x22] | (response[0x23] << 8)
 
@@ -313,7 +314,7 @@ class mp1(device):
     packet[0x08] = 0x01
     state = None
     response = self.send_packet(0x6a, packet)
-    if response is None:
+    if response is False:
      return None
     err = response[0x22] | (response[0x23] << 8)
     if err == 0:
@@ -338,8 +339,8 @@ class mp1(device):
 
 
 class sp1(device):
-  def __init__ (self, host, mac):
-    device.__init__(self, host, mac)
+  def __init__ (self, host, mac, devtype=None):
+    device.__init__(self, host, mac, devtype)
     self.type = "SP1"
 
   def set_power(self, state):
@@ -349,8 +350,8 @@ class sp1(device):
 
 
 class sp2(device):
-  def __init__ (self, host, mac):
-    device.__init__(self, host, mac)
+  def __init__ (self, host, mac, devtype=None):
+    device.__init__(self, host, mac, devtype)
     self.type = "SP2/SP3"
 
   def set_power(self, state):
@@ -365,7 +366,7 @@ class sp2(device):
     packet = bytearray(16)
     packet[0] = 1
     response = self.send_packet(0x6a, packet)
-    if response is None:
+    if response is False:
      return None
     err = response[0x22] | (response[0x23] << 8)
     state = None
@@ -381,24 +382,27 @@ class sp2(device):
   def get_energy(self):
     packet = bytearray([8, 0, 254, 1, 5, 1, 0, 0, 0, 45])
     response = self.send_packet(0x6a, packet)
+    if response is False:
+     return None
     err = response[0x22] | (response[0x23] << 8)
     energy = None
     if err == 0:
-      payload = self.decrypt(bytes(response[0x38:]))
+      aes = AES.new(bytes(self.key), AES.MODE_CBC, bytes(self.iv))
+      payload = aes.decrypt(bytes(response[0x38:]))
       energy = int(hex(ord(payload[7]) * 256 + ord(payload[6]))[2:]) + int(hex(ord(payload[5]))[2:])/100.0
     return energy
 
 
 class a1(device):
-  def __init__ (self, host, mac):
-    device.__init__(self, host, mac)
+  def __init__ (self, host, mac, devtype=None):
+    device.__init__(self, host, mac, devtype)
     self.type = "A1"
 
   def check_sensors(self):
     packet = bytearray(16)
     packet[0] = 1
     response = self.send_packet(0x6a, packet)
-    if response is None:
+    if response is False:
      return {}
     err = response[0x22] | (response[0x23] << 8)
     data = {}
@@ -473,15 +477,15 @@ class a1(device):
       return data
 
 class rm(device):
-  def __init__ (self, host, mac):
-    device.__init__(self, host, mac)
+  def __init__ (self, host, mac, devtype=None):
+    device.__init__(self, host, mac, devtype)
     self.type = "RM2"
 
   def check_data(self):
     packet = bytearray(16)
     packet[0] = 4
     response = self.send_packet(0x6a, packet)
-    if response is None:
+    if response is False:
      return None
     err = response[0x22] | (response[0x23] << 8)
     if err == 0:
@@ -505,7 +509,7 @@ class rm(device):
     packet = bytearray(16)
     packet[0] = 1
     response = self.send_packet(0x6a, packet)
-    if response is None:
+    if response is False:
      return ""
     err = response[0x22] | (response[0x23] << 8)
     if err == 0:
@@ -520,7 +524,7 @@ class rm(device):
 # For legay compatibility - don't use this
 class rm2(rm):
   def __init__ (self):
-    device.__init__(self, None, None)
+    device.__init__(self, None, None, None)
 
   def discover(self):
     dev = discover()

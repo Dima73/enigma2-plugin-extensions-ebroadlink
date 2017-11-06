@@ -1,5 +1,6 @@
 from . import _
 from Plugins.Plugin import PluginDescriptor
+from Crypto.Cipher import AES
 
 def broadlinkMain(session, **kwargs):
 	import ui
