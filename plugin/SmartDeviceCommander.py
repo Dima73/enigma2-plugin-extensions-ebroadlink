@@ -175,7 +175,7 @@ class device:
     payload[0x36] = ord('1')
 
     response = self.send_packet(0x65, payload)
-    if not response:
+    if response is None:
      return False
 
     enc_payload = response[0x38:]
@@ -238,7 +238,7 @@ class device:
     try:
         payload = aes.encrypt(bytes(payload))
     except:
-        return False
+        return None
     packet[0x34] = checksum & 0xff
     packet[0x35] = checksum >> 8
 
@@ -291,7 +291,8 @@ class mp1(device):
     packet[0x0e] = sid_mask if state else 0
 
     response = self.send_packet(0x6a, packet)
-
+    if response is None:
+     return None
     err = response[0x22] | (response[0x23] << 8)
 
   def set_power(self, sid, state):
@@ -312,6 +313,8 @@ class mp1(device):
     packet[0x08] = 0x01
     state = None
     response = self.send_packet(0x6a, packet)
+    if response is None:
+     return None
     err = response[0x22] | (response[0x23] << 8)
     if err == 0:
       aes = AES.new(bytes(self.key), AES.MODE_CBC, bytes(self.iv))
@@ -362,6 +365,8 @@ class sp2(device):
     packet = bytearray(16)
     packet[0] = 1
     response = self.send_packet(0x6a, packet)
+    if response is None:
+     return None
     err = response[0x22] | (response[0x23] << 8)
     state = None
     if err == 0:
@@ -393,6 +398,8 @@ class a1(device):
     packet = bytearray(16)
     packet[0] = 1
     response = self.send_packet(0x6a, packet)
+    if response is None:
+     return {}
     err = response[0x22] | (response[0x23] << 8)
     data = {}
     if err == 0:
@@ -444,6 +451,8 @@ class a1(device):
     packet = bytearray(16)
     packet[0] = 1
     response = self.send_packet(0x6a, packet)
+    if response is None:
+     return {}
     err = response[0x22] | (response[0x23] << 8)
     if err == 0:
       data = {}
@@ -472,6 +481,8 @@ class rm(device):
     packet = bytearray(16)
     packet[0] = 4
     response = self.send_packet(0x6a, packet)
+    if response is None:
+     return None
     err = response[0x22] | (response[0x23] << 8)
     if err == 0:
       aes = AES.new(bytes(self.key), AES.MODE_CBC, bytes(self.iv))
@@ -494,6 +505,8 @@ class rm(device):
     packet = bytearray(16)
     packet[0] = 1
     response = self.send_packet(0x6a, packet)
+    if response is None:
+     return ""
     err = response[0x22] | (response[0x23] << 8)
     if err == 0:
       aes = AES.new(bytes(self.key), AES.MODE_CBC, bytes(self.iv))
