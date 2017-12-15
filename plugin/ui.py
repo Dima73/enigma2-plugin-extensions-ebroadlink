@@ -21,7 +21,7 @@ from broadlinkut import ibroadlinkUt, broadlinkUt
 from broadlinkedit import broadlinkEdit
 import SmartDeviceCommander
 
-version = "1.1"
+version = "1.2"
 
 SP2SP3 = "0"
 RM2 = "1"
@@ -462,15 +462,15 @@ class broadlink(Screen, HelpableScreen):
 			status = device.check_temperature()
 			text =_("Temperature") + ": " + str(status) + " C"
 		elif self.command == "energymonitor":
-			if device.devtype == 0x9479 or device.devtype == 0x947a or device.devtype == 0x2711 or device.devtype == 0x2719 or device.devtype == 0x7919 or device.devtype == 0x271a or device.devtype == 0x791a:
-				status = device.get_energy()
-				if status is None:
-					extra_text = _("unknown")
-				else:
-					extra_text = str(status) + " W"
-				text =_("Current energy") + ": " + extra_text
+			#if device.devtype == 0x9479 or device.devtype == 0x947a or device.devtype == 0x2711 or device.devtype == 0x2719 or device.devtype == 0x7919 or device.devtype == 0x271a or device.devtype == 0x791a:
+			status = device.get_energy()
+			if status is None:
+				extra_text = _("unknown")
 			else:
-				text = _("Command not support!")
+				extra_text = str(status) + " W"
+			text =_("Current energy") + ": " + extra_text
+			#else:
+			#	text = _("Command not support!")
 		self.session.openWithCallback(self.exitPlugin, MessageBox,_("Device %s\n\n%s\n") % (self.pcinfo['name'], text),type = MessageBox.TYPE_INFO, timeout = 6)
 
 	def showPCsList(self):
