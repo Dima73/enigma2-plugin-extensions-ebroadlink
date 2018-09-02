@@ -21,7 +21,7 @@ from broadlinkut import ibroadlinkUt, broadlinkUt
 from broadlinkedit import broadlinkEdit
 import SmartDeviceCommander
 
-version = "1.2"
+version = "1.3"
 
 SP2SP3 = "0"
 RM2 = "1"
