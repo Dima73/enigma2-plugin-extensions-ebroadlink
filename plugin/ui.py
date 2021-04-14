@@ -519,7 +519,7 @@ class broadlink(Screen, HelpableScreen):
 			logo = LoadPixmap(cached=True, path=resolveFilename(SCOPE_PLUGINS, self.ppath+"/img/sp1.png"))
 		elif system == SP2SP3:
 			logo = LoadPixmap(cached=True, path=resolveFilename(SCOPE_PLUGINS, self.ppath+"/img/sp23.png"))
-		return( pc, entry["name"], logo, ip, mac )
+		return(pc, entry["name"], logo, ip, mac)
 
 	def keyOK(self):
 		self.session.openWithCallback(self.editClosed, broadlinkEdit, self.pcinfo)

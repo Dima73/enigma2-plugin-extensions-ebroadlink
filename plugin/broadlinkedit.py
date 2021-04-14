@@ -78,7 +78,7 @@ class broadlinkEdit(Screen, ConfigListScreen, HelpableScreen):
 		ConfigListScreen.__init__(self, broadlinkEditconfigList, session=self.session, on_change=self.changedEntry)
 
 		if self.pcinfo is None:
-			self.pcinfo = { 'name': False, 'ip': False, 'mac': False, 'system': False, 'user': False, 'passwd': False, 'bqdn': False }
+			self.pcinfo = {'name': False, 'ip': False, 'mac': False, 'system': False, 'user': False, 'passwd': False, 'bqdn': False}
 
 		self["key_red"] = Button(_("Cancel"))
 		self["key_green"] = Button(_("Ok"))
@@ -234,9 +234,9 @@ class broadlinkEdit(Screen, ConfigListScreen, HelpableScreen):
 		current = self["config"].getCurrent()
 		name = cfg.name.value
 		if self.remotepc.has_key(name) is True:
-			self.session.openWithCallback(self.updateConfig, MessageBox, (_("A BroadLink entry with this name already exists!\nUpdate existing entry and continue?") ) )
+			self.session.openWithCallback(self.updateConfig, MessageBox, (_("A BroadLink entry with this name already exists!\nUpdate existing entry and continue?")))
 		else:
-			self.session.openWithCallback(self.applyConfig, MessageBox, (_("Are you sure you want to add this BroadLink smart?\n") ) )
+			self.session.openWithCallback(self.applyConfig, MessageBox, (_("Are you sure you want to add this BroadLink smart?\n")))
 
 	def updateConfig(self, ret=False):
 		if (ret == True):
@@ -261,7 +261,7 @@ class broadlinkEdit(Screen, ConfigListScreen, HelpableScreen):
 
 	def applyConfig(self, ret=False):
 		if (ret == True):
-			data = { 'name': False, 'ip': False, 'mac': False, 'system': False, 'username': False, 'password': False, 'bqdn': False }
+			data = {'name': False, 'ip': False, 'mac': False, 'system': False, 'username': False, 'password': False, 'bqdn': False}
 			data['name'] = cfg.name.value
 			data['ip'] = cfg.ip.getText()
 			data['mac'] = cfg.mac.value

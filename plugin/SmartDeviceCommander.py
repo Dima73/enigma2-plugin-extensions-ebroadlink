@@ -273,7 +273,7 @@ class device:
 
 
 class mp1(device):
-  def __init__ (self, host, mac, devtype=None):
+  def __init__(self, host, mac, devtype=None):
     device.__init__(self, host, mac, devtype)
     self.type = "MP1"
 
@@ -342,7 +342,7 @@ class mp1(device):
 
 
 class sp1(device):
-  def __init__ (self, host, mac, devtype=None):
+  def __init__(self, host, mac, devtype=None):
     device.__init__(self, host, mac, devtype)
     self.type = "SP1"
 
@@ -353,7 +353,7 @@ class sp1(device):
 
 
 class sp2(device):
-  def __init__ (self, host, mac, devtype=None):
+  def __init__(self, host, mac, devtype=None):
     device.__init__(self, host, mac, devtype)
     self.type = "SP2/SP3"
 
@@ -397,7 +397,7 @@ class sp2(device):
 
 
 class a1(device):
-  def __init__ (self, host, mac, devtype=None):
+  def __init__(self, host, mac, devtype=None):
     device.__init__(self, host, mac, devtype)
     self.type = "A1"
 
@@ -480,7 +480,7 @@ class a1(device):
       return data
 
 class rm(device):
-  def __init__ (self, host, mac, devtype=None):
+  def __init__(self, host, mac, devtype=None):
     device.__init__(self, host, mac, devtype)
     self.type = "RM2"
 
@@ -526,7 +526,7 @@ class rm(device):
 
 # For legay compatibility - don't use this
 class rm2(rm):
-  def __init__ (self):
+  def __init__(self):
     device.__init__(self, None, None, None)
 
   def discover(self):

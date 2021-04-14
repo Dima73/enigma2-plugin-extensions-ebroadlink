@@ -33,7 +33,7 @@ class broadlinkUt(Screen):
 			Len = len(definitions)
 			return Len > 0 and definitions[Len-1].text or default
 		for pc in tree.findall("host"):
-			data = { 'name': False, 'ip': False, 'mac': False, 'system': False, 'user': False, 'passwd': False, 'bqdn': False }
+			data = {'name': False, 'ip': False, 'mac': False, 'system': False, 'user': False, 'passwd': False, 'bqdn': False}
 			try:
 				data['name'] = getValue(pc.findall("name"), self.pcStr).encode("UTF-8")
 				data['ip'] = getValue(pc.findall("ip"), "192.168.1.0").encode("UTF-8")
@@ -58,7 +58,7 @@ class broadlinkUt(Screen):
 			self.checkList.pop()
 
 	def setDummyRecord(self):
-		data = { 'name': False, 'ip': False, 'mac': False, 'system': False, 'user': False, 'passwd': False, 'bqdn': False }
+		data = {'name': False, 'ip': False, 'mac': False, 'system': False, 'user': False, 'passwd': False, 'bqdn': False}
 		data['name'] = self.pcStr
 		data['ip'] = "192.168.1.100"
 		data['mac'] = "00:00:00:00:00:00"
