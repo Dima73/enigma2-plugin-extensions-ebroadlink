@@ -9,5 +9,5 @@ def broadlinkMain(session, **kwargs):
 def Plugins(path,**kwargs):
 	global plugin_path
 	plugin_path = path
-	result = [PluginDescriptor(name="E-BroadLink",description = _("Production BroadLink management"),where = [ PluginDescriptor.WHERE_EXTENSIONSMENU, PluginDescriptor.WHERE_PLUGINMENU ],icon = 'plugin.png',fnc = broadlinkMain)]
+	result = [PluginDescriptor(name="E-BroadLink",description=_("Production BroadLink management"),where=[ PluginDescriptor.WHERE_EXTENSIONSMENU, PluginDescriptor.WHERE_PLUGINMENU ],icon='plugin.png',fnc=broadlinkMain)]
 	return result

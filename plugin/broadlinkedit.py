@@ -54,7 +54,7 @@ class broadlinkEdit(Screen, ConfigListScreen, HelpableScreen):
 		<widget name="0" pixmaps="skin_default/buttons/button_green_off.png,skin_default/buttons/button_green.png" position="10,43" zPosition="10" size="15,16" transparent="1" alphatest="on"/>
 	</screen>"""
 
-	def __init__(self, session, pcinfo = None):
+	def __init__(self, session, pcinfo=None):
 		self.skin = broadlinkEdit.skin
 		self.session = session
 		self.pcinfo = pcinfo
@@ -75,7 +75,7 @@ class broadlinkEdit(Screen, ConfigListScreen, HelpableScreen):
 		broadlinkEditconfigList.append(getConfigListEntry(_("BouqDown"), cfg.bqdn))
 		broadlinkEditconfigList.append(getConfigListEntry(_("Closing plugin (BouqDown/BouqUp)"), cfg.close))
 
-		ConfigListScreen.__init__(self, broadlinkEditconfigList, session=self.session, on_change = self.changedEntry)
+		ConfigListScreen.__init__(self, broadlinkEditconfigList, session=self.session, on_change=self.changedEntry)
 
 		if self.pcinfo is None:
 			self.pcinfo = { 'name': False, 'ip': False, 'mac': False, 'system': False, 'user': False, 'passwd': False, 'bqdn': False }
@@ -138,7 +138,7 @@ class broadlinkEdit(Screen, ConfigListScreen, HelpableScreen):
 				if choice:
 					str_type = choice[1].type
 					if str_type == "Unknown":
-						self.session.open(MessageBox, _("Not apply!\nBroadLink device type is unknown!"), type = MessageBox.TYPE_ERROR, timeout = 5)
+						self.session.open(MessageBox, _("Not apply!\nBroadLink device type is unknown!"), type=MessageBox.TYPE_ERROR, timeout=5)
 						return
 					if str_type == "MP1":
 						cfg.system.value = "2"
@@ -238,7 +238,7 @@ class broadlinkEdit(Screen, ConfigListScreen, HelpableScreen):
 		else:
 			self.session.openWithCallback(self.applyConfig, MessageBox, (_("Are you sure you want to add this BroadLink smart?\n") ) )
 
-	def updateConfig(self, ret = False):
+	def updateConfig(self, ret=False):
 		if (ret == True):
 			ibroadlinkUt.setRemotePCAttribute(cfg.name.value, "name", cfg.name.value)
 			ibroadlinkUt.setRemotePCAttribute(cfg.name.value, "ip", cfg.ip.getText())
@@ -248,7 +248,7 @@ class broadlinkEdit(Screen, ConfigListScreen, HelpableScreen):
 			ibroadlinkUt.setRemotePCAttribute(cfg.name.value, "passwd", cfg.passwd.value)
 			ibroadlinkUt.setRemotePCAttribute(cfg.name.value, "bqdn", cfg.bqdn.value)
 
-			self.session.openWithCallback(self.updateFinished, MessageBox, _("Your BroadLink has been updated..."), type = MessageBox.TYPE_INFO, timeout = 2)
+			self.session.openWithCallback(self.updateFinished, MessageBox, _("Your BroadLink has been updated..."), type=MessageBox.TYPE_INFO, timeout=2)
 			ibroadlinkUt.writePCsConfig()
 			cfg.close.save()
 			ibroadlinkUt.configActualized = True
@@ -259,7 +259,7 @@ class broadlinkEdit(Screen, ConfigListScreen, HelpableScreen):
 		if data is not None and data is True:
 			self.close()
 
-	def applyConfig(self, ret = False):
+	def applyConfig(self, ret=False):
 		if (ret == True):
 			data = { 'name': False, 'ip': False, 'mac': False, 'system': False, 'username': False, 'password': False, 'bqdn': False }
 			data['name'] = cfg.name.value
@@ -270,7 +270,7 @@ class broadlinkEdit(Screen, ConfigListScreen, HelpableScreen):
 			data['passwd'] = cfg.passwd.value
 			data['bqdn'] = cfg.bqdn.value
 
-			self.session.openWithCallback(self.applyFinished, MessageBox, _("Your new BroadLink smart has been added."), type = MessageBox.TYPE_INFO, timeout = 2)
+			self.session.openWithCallback(self.applyFinished, MessageBox, _("Your new BroadLink smart has been added."), type=MessageBox.TYPE_INFO, timeout=2)
 			ibroadlinkUt.remotepc[cfg.name.value] = data
 			ibroadlinkUt.writePCsConfig()
 			ibroadlinkUt.configActualized = True

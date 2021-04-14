@@ -43,7 +43,7 @@ class broadlinkSummary(Screen):
 	</screen>"""
 
 	def __init__(self, session, parent):
-		Screen.__init__(self, session, parent = parent)
+		Screen.__init__(self, session, parent=parent)
 		self["title"] = StaticText(_(parent.setup_title))
 		self["pcname"] = StaticText("")
 		self["bouquet"] = StaticText("")
@@ -209,7 +209,7 @@ class broadlink(Screen, HelpableScreen):
 					return
 				self.command = choice[1]
 				self.sendCommand()
-			self.session.openWithCallback(subMenu, ChoiceBox, title = menu_title_text, list=menu)
+			self.session.openWithCallback(subMenu, ChoiceBox, title=menu_title_text, list=menu)
 
 	def statusbarText(self):
 		self.text = _("User defined...")
@@ -344,7 +344,7 @@ class broadlink(Screen, HelpableScreen):
 			except:
 				pass
 		if device is None or not device.auth():
-			self.session.openWithCallback(self.exitPlugin, MessageBox,_("Unknown error!\n"),type = MessageBox.TYPE_ERROR, timeout = 5)
+			self.session.openWithCallback(self.exitPlugin, MessageBox,_("Unknown error!\n"),type=MessageBox.TYPE_ERROR, timeout=5)
 			return
 		add = ""
 		text = ""
@@ -476,7 +476,7 @@ class broadlink(Screen, HelpableScreen):
 			text =_("Current energy") + ": " + extra_text
 			#else:
 			#	text = _("Command not support!")
-		self.session.openWithCallback(self.exitPlugin, MessageBox,_("Device %s\n\n%s\n") % (self.pcinfo['name'], text),type = MessageBox.TYPE_INFO, timeout = 6)
+		self.session.openWithCallback(self.exitPlugin, MessageBox,_("Device %s\n\n%s\n") % (self.pcinfo['name'], text),type=MessageBox.TYPE_INFO, timeout=6)
 
 	def showPCsList(self):
 		oldIndex = self["config"].getIndex()
@@ -485,7 +485,7 @@ class broadlink(Screen, HelpableScreen):
 		remotepc = ibroadlinkUt.getPCsList()
 		for name in remotepc.keys():
 			list.append(self.buildPCViewItem(ibroadlinkUt.remotepc[name]))
-		list.sort(key = lambda x: x[1])
+		list.sort(key=lambda x: x[1])
 		self["config"].setList(list)
 		newCount = self["config"].count()
 		newIndex = self["config"].getIndex()
@@ -530,7 +530,7 @@ class broadlink(Screen, HelpableScreen):
 
 	def deleteItem(self):
 		self.retValue = self.pcinfo['name']
-		self.session.openWithCallback(self.removeData, MessageBox, _("Do You want remove BroadLink device: %s?") % (self.pcinfo['name']), type = MessageBox.TYPE_YESNO)
+		self.session.openWithCallback(self.removeData, MessageBox, _("Do You want remove BroadLink device: %s?") % (self.pcinfo['name']), type=MessageBox.TYPE_YESNO)
 
 	def removeData(self, answer=None):
 		if answer is not None and answer:
@@ -538,13 +538,13 @@ class broadlink(Screen, HelpableScreen):
 			ibroadlinkUt.writePCsConfig()
 			ibroadlinkUt.getRemotePCPoints()
 			self.showPCsList()
-			self.session.open(MessageBox, _("BroadLink device has been removed..."), type = MessageBox.TYPE_INFO, timeout = 3)
+			self.session.open(MessageBox, _("BroadLink device has been removed..."), type=MessageBox.TYPE_INFO, timeout=3)
 
 	def message(self, string, delay, msg_type=""):
 		msg = MessageBox.TYPE_INFO
 		if msg_type=="error":
 			msg = MessageBox.TYPE_ERROR
-		self.session.open(MessageBox, string, type = msg, timeout = delay)
+		self.session.open(MessageBox, string, type=msg, timeout=delay)
 
 	def cancel(self):
 		self.close()
