@@ -7,6 +7,7 @@ import random
 import socket
 import threading
 
+
 def gendevice(devtype, host, mac):
   if devtype == 0: # SP1
     return sp1(host=host, mac=mac, devtype=devtype)
@@ -55,6 +56,7 @@ def gendevice(devtype, host, mac):
   else:
     return device(host=host, mac=mac, devtype=devtype)
 
+
 def discover(timeout=None, local_ip_address=None):
   if local_ip_address is None:
       s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -64,13 +66,13 @@ def discover(timeout=None, local_ip_address=None):
   cs = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
   cs.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
   cs.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
-  cs.bind((local_ip_address,0))
+  cs.bind((local_ip_address, 0))
   port = cs.getsockname()[1]
   starttime = time.time()
 
   devices = []
 
-  timezone = int(time.timezone/-3600)
+  timezone = int(time.timezone / -3600)
   packet = bytearray(0x30)
 
   year = datetime.now().year
@@ -146,7 +148,7 @@ class device:
     self.cs = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     self.cs.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     self.cs.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
-    self.cs.bind(('',0))
+    self.cs.bind(('', 0))
     self.type = "Unknown"
     self.lock = threading.Lock()
 
@@ -226,11 +228,11 @@ class device:
     packet[0x31] = self.id[1]
     packet[0x32] = self.id[2]
     packet[0x33] = self.id[3]
-    
+
     # pad the payload for AES encryption
-    if len(payload)>0:
-      numpad=(len(payload)//16+1)*16
-      payload=payload.ljust(numpad,b"\x00")
+    if len(payload) > 0:
+      numpad = (len(payload) // 16 + 1) * 16
+      payload = payload.ljust(numpad, b"\x00")
 
     checksum = 0xbeaf
     for i in range(len(payload)):
@@ -273,7 +275,7 @@ class device:
 
 
 class mp1(device):
-  def __init__ (self, host, mac, devtype=None):
+  def __init__(self, host, mac, devtype=None):
     device.__init__(self, host, mac, devtype)
     self.type = "MP1"
 
@@ -286,7 +288,7 @@ class mp1(device):
     packet[0x03] = 0xa5
     packet[0x04] = 0x5a
     packet[0x05] = 0x5a
-    packet[0x06] = 0xb2 + ((sid_mask<<1) if state else sid_mask)
+    packet[0x06] = 0xb2 + ((sid_mask << 1) if state else sid_mask)
     packet[0x07] = 0xc0
     packet[0x08] = 0x02
     packet[0x0a] = 0x03
@@ -331,7 +333,8 @@ class mp1(device):
   def check_power(self):
     """Returns the power state of the smart power strip."""
     state = self.check_power_raw()
-    if state is None: return None
+    if state is None:
+      return None
     data = {}
     data['s1'] = bool(state & 0x01)
     data['s2'] = bool(state & 0x02)
@@ -341,7 +344,7 @@ class mp1(device):
 
 
 class sp1(device):
-  def __init__ (self, host, mac, devtype=None):
+  def __init__(self, host, mac, devtype=None):
     device.__init__(self, host, mac, devtype)
     self.type = "SP1"
 
@@ -352,7 +355,7 @@ class sp1(device):
 
 
 class sp2(device):
-  def __init__ (self, host, mac, devtype=None):
+  def __init__(self, host, mac, devtype=None):
     device.__init__(self, host, mac, devtype)
     self.type = "SP2/SP3"
 
@@ -391,12 +394,12 @@ class sp2(device):
     if err == 0:
       aes = AES.new(bytes(self.key), AES.MODE_CBC, bytes(self.iv))
       payload = aes.decrypt(bytes(response[0x38:]))
-      energy = int(hex(ord(payload[7]) * 256 + ord(payload[6]))[2:]) + int(hex(ord(payload[5]))[2:])/100.0
+      energy = int(hex(ord(payload[7]) * 256 + ord(payload[6]))[2:]) + int(hex(ord(payload[5]))[2:]) / 100.0
     return energy
 
 
 class a1(device):
-  def __init__ (self, host, mac, devtype=None):
+  def __init__(self, host, mac, devtype=None):
     device.__init__(self, host, mac, devtype)
     self.type = "A1"
 
@@ -478,8 +481,9 @@ class a1(device):
         data['noise'] = ord(payload[0xc])
       return data
 
+
 class rm(device):
-  def __init__ (self, host, mac, devtype=None):
+  def __init__(self, host, mac, devtype=None):
     device.__init__(self, host, mac, devtype)
     self.type = "RM2"
 
@@ -524,8 +528,10 @@ class rm(device):
     return temp
 
 # For legay compatibility - don't use this
+
+
 class rm2(rm):
-  def __init__ (self):
+  def __init__(self):
     device.__init__(self, None, None, None)
 
   def discover(self):
@@ -535,6 +541,8 @@ class rm2(rm):
 
 # Setup a new Broadlink device via AP Mode. Review the README to see how to enter AP Mode.
 # Only tested with Broadlink RM3 Mini (Blackbean)
+
+
 def setup(ssid, password, security_mode):
   # Security mode options are (0 - none, 1 = WEP, 2 = WPA1, 3 = WPA2, 4 = WPA1/2)
   payload = bytearray(0x88)

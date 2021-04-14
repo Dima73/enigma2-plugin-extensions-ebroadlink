@@ -8,6 +8,7 @@ from xml.etree.cElementTree import parse as cet_parse
 
 XML_BTAB = "/etc/enigma2/broadlink.xml"
 
+
 class broadlinkUt(Screen):
 
 	def __init__(self):
@@ -31,9 +32,9 @@ class broadlinkUt(Screen):
 		def getValue(definitions, default):
 			ret = ""
 			Len = len(definitions)
-			return Len > 0 and definitions[Len-1].text or default
+			return Len > 0 and definitions[Len - 1].text or default
 		for pc in tree.findall("host"):
-			data = { 'name': False, 'ip': False, 'mac': False, 'system': False, 'user': False, 'passwd': False, 'bqdn': False }
+			data = {'name': False, 'ip': False, 'mac': False, 'system': False, 'user': False, 'passwd': False, 'bqdn': False}
 			try:
 				data['name'] = getValue(pc.findall("name"), self.pcStr).encode("UTF-8")
 				data['ip'] = getValue(pc.findall("ip"), "192.168.1.0").encode("UTF-8")
@@ -47,10 +48,10 @@ class broadlinkUt(Screen):
 				print "[broadlink] Error reading remotebroadlink:", e
 
 		self.checkList = self.remotepc.keys()
-		if not self.checkList: 
+		if not self.checkList:
 		# exists empty file => create dummy record
 			self.setDummyRecord()
-		
+
 		self.checkList = self.remotepc.keys()
 		if not self.checkList:
 			print "\n[broadlink] self.remotepc without remotebroadlink", self.remotepc
@@ -58,7 +59,7 @@ class broadlinkUt(Screen):
 			self.checkList.pop()
 
 	def setDummyRecord(self):
-		data = { 'name': False, 'ip': False, 'mac': False, 'system': False, 'user': False, 'passwd': False, 'bqdn': False }
+		data = {'name': False, 'ip': False, 'mac': False, 'system': False, 'user': False, 'passwd': False, 'bqdn': False}
 		data['name'] = self.pcStr
 		data['ip'] = "192.168.1.100"
 		data['mac'] = "00:00:00:00:00:00"
@@ -109,5 +110,6 @@ class broadlinkUt(Screen):
 				self.newremotepc[name] = data
 		self.remotepc.clear()
 		self.remotepc = self.newremotepc
+
 
 ibroadlinkUt = broadlinkUt()
