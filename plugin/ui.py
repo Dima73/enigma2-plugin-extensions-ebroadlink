@@ -71,11 +71,11 @@ class broadlink(Screen, HelpableScreen):
 
 		<ePixmap name="red"    position="0,0"   zPosition="2" size="140,40" pixmap="skin_default/buttons/red.png" transparent="1" alphatest="on" />
 		<ePixmap name="green"  position="140,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/green.png" transparent="1" alphatest="on" />
-		<ePixmap name="yellow" position="280,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/yellow.png" transparent="1" alphatest="on" /> 
-		<ePixmap name="blue"   position="420,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/blue.png" transparent="1" alphatest="on" /> 
+		<ePixmap name="yellow" position="280,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/yellow.png" transparent="1" alphatest="on" />
+		<ePixmap name="blue"   position="420,0" zPosition="2" size="140,40" pixmap="skin_default/buttons/blue.png" transparent="1" alphatest="on" />
 
-		<widget name="key_red" position="0,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" /> 
-		<widget name="key_green" position="140,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" /> 
+		<widget name="key_red" position="0,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
+		<widget name="key_green" position="140,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
 		<widget name="key_yellow" position="280,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
 		<widget name="key_blue" position="420,0" size="140,40" valign="center" halign="center" zPosition="4"  foregroundColor="white" font="Regular;20" transparent="1" shadowColor="background" shadowOffset="-2,-2" />
 
@@ -221,7 +221,7 @@ class broadlink(Screen, HelpableScreen):
 			self.pcinfo = ibroadlinkUt.remotepc[current[1]]
 			if self.pcinfo is None:
 				return
-			soccet_type = False 
+			soccet_type = False
 			if self.pcinfo['system'] == SP2SP3 or self.pcinfo['system'] == SP1 or self.pcinfo['system'] == MP1:
 				if self.pcinfo['system'] != SP1:
 					self.text1 = _("Status power")
@@ -495,7 +495,7 @@ class broadlink(Screen, HelpableScreen):
 		self.setListIndex(oldIndex, newIndex, oldCount, newCount)
 
 	def setListIndex(self, oldIndex, newIndex, oldCount, newCount):
-		if newIndex != None: 
+		if newIndex != None:
 			if oldIndex + 1 == oldCount:
 				if oldCount < newCount:
 					self["config"].setIndex(oldIndex + 1)

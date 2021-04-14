@@ -48,10 +48,10 @@ class broadlinkUt(Screen):
 				print "[broadlink] Error reading remotebroadlink:", e
 
 		self.checkList = self.remotepc.keys()
-		if not self.checkList: 
+		if not self.checkList:
 		# exists empty file => create dummy record
 			self.setDummyRecord()
-		
+
 		self.checkList = self.remotepc.keys()
 		if not self.checkList:
 			print "\n[broadlink] self.remotepc without remotebroadlink", self.remotepc
