@@ -178,7 +178,8 @@ class broadlink(Screen, HelpableScreen):
 	def showMenu(self):
 		self.command = ""
 		self.closing = False
-		if self.pcinfo is None: return
+		if self.pcinfo is None:
+			return
 		menu_title_text = "%s" % (self.pcinfo['name']) + _(" - select action:")
 		menu = []
 		if self.pcinfo['system'] == SP2SP3 or self.pcinfo['system'] == SP1 or self.pcinfo['system'] == MP1:
@@ -215,7 +216,8 @@ class broadlink(Screen, HelpableScreen):
 		current = self["config"].getCurrent()
 		if current:
 			self.pcinfo = ibroadlinkUt.remotepc[current[1]]
-			if self.pcinfo is None: return
+			if self.pcinfo is None:
+				return
 			soccet_type = False 
 			if self.pcinfo['system'] == SP2SP3 or self.pcinfo['system'] == SP1 or self.pcinfo['system'] == MP1:
 				if self.pcinfo['system'] != SP1:
@@ -233,7 +235,8 @@ class broadlink(Screen, HelpableScreen):
 
 	def bouqDown(self):
 		self.command = ""
-		if self.pcinfo is None: return
+		if self.pcinfo is None:
+			return
 		if self.pcinfo['bqdn'] == ENABLEPOWER:
 			if self.pcinfo['system'] == SP2SP3 or self.pcinfo['system'] == SP1:
 				self.closing = True
@@ -273,7 +276,8 @@ class broadlink(Screen, HelpableScreen):
 
 	def bouqUp(self):
 		self.command = ""
-		if self.pcinfo is None: return
+		if self.pcinfo is None:
+			return
 		if self.pcinfo['system'] == SP2SP3 or self.pcinfo['system'] == MP1:
 			self.closing = True
 			self.command = "statuspower"
@@ -307,7 +311,8 @@ class broadlink(Screen, HelpableScreen):
 
 	def sendDelayed(self):
 		self.commandTimer.stop()
-		if self.pcinfo is None: return
+		if self.pcinfo is None:
+			return
 		mac_str = str(self.pcinfo["mac"]).replace(":", "")
 		mac_str = mac_str.upper()
 		mac = mac_str.decode('hex')
