@@ -70,7 +70,7 @@ def discover(timeout=None, local_ip_address=None):
 
   devices = []
 
-  timezone = int(time.timezone/-3600)
+  timezone = int(time.timezone / -3600)
   packet = bytearray(0x30)
 
   year = datetime.now().year
@@ -228,9 +228,9 @@ class device:
     packet[0x33] = self.id[3]
     
     # pad the payload for AES encryption
-    if len(payload)>0:
-      numpad=(len(payload)//16+1)*16
-      payload=payload.ljust(numpad,b"\x00")
+    if len(payload) > 0:
+      numpad = (len(payload) // 16 + 1) * 16
+      payload = payload.ljust(numpad,b"\x00")
 
     checksum = 0xbeaf
     for i in range(len(payload)):
@@ -286,7 +286,7 @@ class mp1(device):
     packet[0x03] = 0xa5
     packet[0x04] = 0x5a
     packet[0x05] = 0x5a
-    packet[0x06] = 0xb2 + ((sid_mask<<1) if state else sid_mask)
+    packet[0x06] = 0xb2 + ((sid_mask << 1) if state else sid_mask)
     packet[0x07] = 0xc0
     packet[0x08] = 0x02
     packet[0x0a] = 0x03
@@ -392,7 +392,7 @@ class sp2(device):
     if err == 0:
       aes = AES.new(bytes(self.key), AES.MODE_CBC, bytes(self.iv))
       payload = aes.decrypt(bytes(response[0x38:]))
-      energy = int(hex(ord(payload[7]) * 256 + ord(payload[6]))[2:]) + int(hex(ord(payload[5]))[2:])/100.0
+      energy = int(hex(ord(payload[7]) * 256 + ord(payload[6]))[2:]) + int(hex(ord(payload[5]))[2:]) / 100.0
     return energy
 
 

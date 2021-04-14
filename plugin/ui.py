@@ -136,8 +136,8 @@ class broadlink(Screen, HelpableScreen):
 			"bouqup": (self.bouqUp, self.text1),
 			}, -1)
 
-		self.ipStr = _("IP:")+" "
-		self.macStr = _("MAC:")+" "
+		self.ipStr = _("IP:") + " "
+		self.macStr = _("MAC:") + " "
 
 		self.pcinfo = None
 		self.closing = False
@@ -465,7 +465,7 @@ class broadlink(Screen, HelpableScreen):
 					text += "\n"
 		elif self.command == "temperature":
 			status = device.check_temperature()
-			text =_("Temperature") + ": " + str(status) + " C"
+			text = _("Temperature") + ": " + str(status) + " C"
 		elif self.command == "energymonitor":
 			#if device.devtype == 0x9479 or device.devtype == 0x947a or device.devtype == 0x2711 or device.devtype == 0x2719 or device.devtype == 0x7919 or device.devtype == 0x271a or device.devtype == 0x791a:
 			status = device.get_energy()
@@ -473,7 +473,7 @@ class broadlink(Screen, HelpableScreen):
 				extra_text = _("unknown")
 			else:
 				extra_text = str(status) + " W"
-			text =_("Current energy") + ": " + extra_text
+			text = _("Current energy") + ": " + extra_text
 			#else:
 			#	text = _("Command not support!")
 		self.session.openWithCallback(self.exitPlugin, MessageBox,_("Device %s\n\n%s\n") % (self.pcinfo['name'], text),type=MessageBox.TYPE_INFO, timeout=6)
@@ -495,30 +495,30 @@ class broadlink(Screen, HelpableScreen):
 		if newIndex != None: 
 			if oldIndex + 1 == oldCount:
 				if oldCount < newCount:
-					self["config"].setIndex(oldIndex+1)
+					self["config"].setIndex(oldIndex + 1)
 				elif oldCount > newCount:
-					self["config"].setIndex(oldIndex-1)
+					self["config"].setIndex(oldIndex - 1)
 				else:
 					self["config"].setIndex(oldIndex)
 			else:
 				self["config"].setIndex(oldIndex)
 
 	def buildPCViewItem(self, entry):
-		pc = LoadPixmap(cached=True, path=resolveFilename(SCOPE_PLUGINS, self.ppath+"/img/device.png"))
+		pc = LoadPixmap(cached=True, path=resolveFilename(SCOPE_PLUGINS, self.ppath + "/img/device.png"))
 		logo = pc
 		ip = "".join((self.ipStr,str(entry["ip"])))
 		mac = "".join((self.macStr,str(entry["mac"])))
 		system = entry["system"]
 		if system == RM2:
-			logo = LoadPixmap(cached=True, path=resolveFilename(SCOPE_PLUGINS, self.ppath+"/img/rm2.png"))
+			logo = LoadPixmap(cached=True, path=resolveFilename(SCOPE_PLUGINS, self.ppath + "/img/rm2.png"))
 		elif system == A1:
-			logo = LoadPixmap(cached=True, path=resolveFilename(SCOPE_PLUGINS, self.ppath+"/img/a1.png"))
+			logo = LoadPixmap(cached=True, path=resolveFilename(SCOPE_PLUGINS, self.ppath + "/img/a1.png"))
 		elif system == MP1:
-			logo = LoadPixmap(cached=True, path=resolveFilename(SCOPE_PLUGINS, self.ppath+"/img/mp1.png"))
+			logo = LoadPixmap(cached=True, path=resolveFilename(SCOPE_PLUGINS, self.ppath + "/img/mp1.png"))
 		elif system == SP1:
-			logo = LoadPixmap(cached=True, path=resolveFilename(SCOPE_PLUGINS, self.ppath+"/img/sp1.png"))
+			logo = LoadPixmap(cached=True, path=resolveFilename(SCOPE_PLUGINS, self.ppath + "/img/sp1.png"))
 		elif system == SP2SP3:
-			logo = LoadPixmap(cached=True, path=resolveFilename(SCOPE_PLUGINS, self.ppath+"/img/sp23.png"))
+			logo = LoadPixmap(cached=True, path=resolveFilename(SCOPE_PLUGINS, self.ppath + "/img/sp23.png"))
 		return(pc, entry["name"], logo, ip, mac)
 
 	def keyOK(self):
@@ -542,7 +542,7 @@ class broadlink(Screen, HelpableScreen):
 
 	def message(self, string, delay, msg_type=""):
 		msg = MessageBox.TYPE_INFO
-		if msg_type=="error":
+		if msg_type == "error":
 			msg = MessageBox.TYPE_ERROR
 		self.session.open(MessageBox, string, type=msg, timeout=delay)
 
@@ -590,8 +590,8 @@ class broadlink(Screen, HelpableScreen):
 		namestr = names.tostring()
 		ifaces = []
 		for i in range(0, outbytes, struct_size):
-			iface_name = bytes.decode(namestr[i:i+16]).split('\0', 1)[0].encode('ascii')
+			iface_name = bytes.decode(namestr[i:i + 16]).split('\0', 1)[0].encode('ascii')
 			if iface_name != 'lo':
-				iface_addr = socket.inet_ntoa(namestr[i+20:i+24])
+				iface_addr = socket.inet_ntoa(namestr[i + 20:i + 24])
 				ifaces.append((iface_name, iface_addr))
 		return ifaces

@@ -31,7 +31,7 @@ class broadlinkUt(Screen):
 		def getValue(definitions, default):
 			ret = ""
 			Len = len(definitions)
-			return Len > 0 and definitions[Len-1].text or default
+			return Len > 0 and definitions[Len - 1].text or default
 		for pc in tree.findall("host"):
 			data = {'name': False, 'ip': False, 'mac': False, 'system': False, 'user': False, 'passwd': False, 'bqdn': False}
 			try:

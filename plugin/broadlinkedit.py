@@ -187,7 +187,7 @@ class broadlinkEdit(Screen, ConfigListScreen, HelpableScreen):
 				break
 			if entry.find(ip) == 0:
 				p = entry.find(':')
-				pcMAC = entry[p-2:p+15]
+				pcMAC = entry[p - 2:p + 15]
 				if pcMAC != "00:00:00:00:00:00":
 					file.close()
 					return pcMAC
