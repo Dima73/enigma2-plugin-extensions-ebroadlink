@@ -28,6 +28,7 @@ config.plugins.broadlink.bqdn = NoSave(ConfigSelection(default="1", choices=[("1
 config.plugins.broadlink.close = ConfigYesNo(default=False)
 cfg = config.plugins.broadlink
 
+
 class broadlinkEdit(Screen, ConfigListScreen, HelpableScreen):
 	skin = """
 	<screen position="center,center" size="560,275" title="E-BroadLink Configuration" >
@@ -134,6 +135,7 @@ class broadlinkEdit(Screen, ConfigListScreen, HelpableScreen):
 			for dev in devices:
 				name = "%s - %s" % (dev.type, dev.host)
 				menu.append((name, dev))
+
 			def brction(choice):
 				if choice:
 					str_type = choice[1].type

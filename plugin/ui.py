@@ -34,6 +34,7 @@ DISABLEPOWER = "2"
 CHECKSENSORS = "3"
 CHECKTEMPERATURE = "4"
 
+
 class broadlinkSummary(Screen):
 	skin = """
 	<screen position="0,0" size="96,64">
@@ -62,6 +63,7 @@ class broadlinkSummary(Screen):
 	def selectionChanged(self):
 		self["pcname"].text = self.parent.getCurrentEntry()
 		self["bouquet"].text = self.parent.getCurrentValue()
+
 
 class broadlink(Screen, HelpableScreen):
 	skin = """
@@ -171,6 +173,7 @@ class broadlink(Screen, HelpableScreen):
 			menu = []
 			for dev in devices:
 				menu.append((_("%s - %s") % (dev.type, dev.host), dev))
+
 			def brction(choice):
 				pass
 			self.session.openWithCallback(brction, ChoiceBox, title=_("Network overview BroadLink devices..."), list=menu)

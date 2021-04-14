@@ -2,9 +2,11 @@ from . import _
 from Plugins.Plugin import PluginDescriptor
 from Crypto.Cipher import AES
 
+
 def broadlinkMain(session, **kwargs):
 	import ui
 	session.open(ui.broadlink, plugin_path)
+
 
 def Plugins(path, **kwargs):
 	global plugin_path

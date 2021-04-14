@@ -8,6 +8,7 @@ from xml.etree.cElementTree import parse as cet_parse
 
 XML_BTAB = "/etc/enigma2/broadlink.xml"
 
+
 class broadlinkUt(Screen):
 
 	def __init__(self):
@@ -109,5 +110,6 @@ class broadlinkUt(Screen):
 				self.newremotepc[name] = data
 		self.remotepc.clear()
 		self.remotepc = self.newremotepc
+
 
 ibroadlinkUt = broadlinkUt()

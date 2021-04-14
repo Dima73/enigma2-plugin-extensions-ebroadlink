@@ -7,6 +7,7 @@ import random
 import socket
 import threading
 
+
 def gendevice(devtype, host, mac):
   if devtype == 0: # SP1
     return sp1(host=host, mac=mac, devtype=devtype)
@@ -54,6 +55,7 @@ def gendevice(devtype, host, mac):
     return mp1(host=host, mac=mac, devtype=devtype)
   else:
     return device(host=host, mac=mac, devtype=devtype)
+
 
 def discover(timeout=None, local_ip_address=None):
   if local_ip_address is None:
@@ -479,6 +481,7 @@ class a1(device):
         data['noise'] = ord(payload[0xc])
       return data
 
+
 class rm(device):
   def __init__(self, host, mac, devtype=None):
     device.__init__(self, host, mac, devtype)
@@ -525,6 +528,8 @@ class rm(device):
     return temp
 
 # For legay compatibility - don't use this
+
+
 class rm2(rm):
   def __init__(self):
     device.__init__(self, None, None, None)
@@ -536,6 +541,8 @@ class rm2(rm):
 
 # Setup a new Broadlink device via AP Mode. Review the README to see how to enter AP Mode.
 # Only tested with Broadlink RM3 Mini (Blackbean)
+
+
 def setup(ssid, password, security_mode):
   # Security mode options are (0 - none, 1 = WEP, 2 = WPA1, 3 = WPA2, 4 = WPA1/2)
   payload = bytearray(0x88)
