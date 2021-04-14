@@ -184,25 +184,25 @@ class broadlink(Screen, HelpableScreen):
 		menu = []
 		if self.pcinfo['system'] == SP2SP3 or self.pcinfo['system'] == SP1 or self.pcinfo['system'] == MP1:
 			if self.pcinfo['system'] != SP1:
-				menu.append((_("Status power"),"statuspower"))
+				menu.append((_("Status power"), "statuspower"))
 			if self.pcinfo['system'] == SP2SP3 or self.pcinfo['system'] == SP1:
-				menu.append((_("Enable power"),"enablepower"))
-				menu.append((_("Disable power"),"disablepower"))
+				menu.append((_("Enable power"), "enablepower"))
+				menu.append((_("Disable power"), "disablepower"))
 				if self.pcinfo['system'] == SP2SP3:
-					menu.append((_("Current energy only SP2/SP3S"),"energymonitor"))
+					menu.append((_("Current energy only SP2/SP3S"), "energymonitor"))
 			elif self.pcinfo['system'] == MP1:
-				menu.append((_("Enable power (socket 1)"),"enablepower1"))
-				menu.append((_("Enable power (socket 2)"),"enablepower2"))
-				menu.append((_("Enable power (socket 3)"),"enablepower3"))
-				menu.append((_("Enable power (socket 4)"),"enablepower4"))
-				menu.append((_("Disable power (socket 1)"),"disablepower1"))
-				menu.append((_("Disable power (socket 2)"),"disablepower2"))
-				menu.append((_("Disable power (socket 3)"),"disablepower3"))
-				menu.append((_("Disable power (socket 4)"),"disablepower4"))
+				menu.append((_("Enable power (socket 1)"), "enablepower1"))
+				menu.append((_("Enable power (socket 2)"), "enablepower2"))
+				menu.append((_("Enable power (socket 3)"), "enablepower3"))
+				menu.append((_("Enable power (socket 4)"), "enablepower4"))
+				menu.append((_("Disable power (socket 1)"), "disablepower1"))
+				menu.append((_("Disable power (socket 2)"), "disablepower2"))
+				menu.append((_("Disable power (socket 3)"), "disablepower3"))
+				menu.append((_("Disable power (socket 4)"), "disablepower4"))
 		if self.pcinfo['system'] == A1:
-			menu.append((_("Check sensors"),"sensor"))
+			menu.append((_("Check sensors"), "sensor"))
 		if self.pcinfo['system'] == RM2:
-			menu.append((_("Check temperature"),"temperature"))
+			menu.append((_("Check temperature"), "temperature"))
 		if menu:
 			def subMenu(choice):
 				if choice is None:
@@ -247,7 +247,7 @@ class broadlink(Screen, HelpableScreen):
 				self.command = "enablepowerall"
 				self.sendDelayed()
 			else:
-				self.message(_("Command not support %s.") % (self.pcinfo['name']),5,"error")
+				self.message(_("Command not support %s.") % (self.pcinfo['name']), 5, "error")
 		if self.pcinfo['bqdn'] == DISABLEPOWER:
 			if self.pcinfo['system'] == SP2SP3 or self.pcinfo['system'] == SP1:
 				self.closing = True
@@ -258,21 +258,21 @@ class broadlink(Screen, HelpableScreen):
 				self.command = "disablepowerall"
 				self.sendDelayed()
 			else:
-				self.message(_("Command not support %s.") % (self.pcinfo['name']),5,"error")
+				self.message(_("Command not support %s.") % (self.pcinfo['name']), 5, "error")
 		if self.pcinfo['bqdn'] == CHECKSENSORS:
 			if self.pcinfo['system'] == A1:
 				self.closing = True
 				self.command = "sensor"
 				self.sendDelayed()
 			else:
-				self.message(_("Command not support %s.") % (self.pcinfo['name']),5,"error")
+				self.message(_("Command not support %s.") % (self.pcinfo['name']), 5, "error")
 		if self.pcinfo['bqdn'] == CHECKTEMPERATURE:
 			if self.pcinfo['system'] == RM2:
 				self.closing = True
 				self.command = "temperature"
 				self.sendDelayed()
 			else:
-				self.message(_("Command not support %s.") % (self.pcinfo['name']),5,"error")
+				self.message(_("Command not support %s.") % (self.pcinfo['name']), 5, "error")
 
 	def bouqUp(self):
 		self.command = ""
@@ -283,7 +283,7 @@ class broadlink(Screen, HelpableScreen):
 			self.command = "statuspower"
 			self.sendDelayed()
 		else:
-			self.message(_("Command not support %s.") % (self.pcinfo['name']),5,"error")
+			self.message(_("Command not support %s.") % (self.pcinfo['name']), 5, "error")
 
 	def getItemParams(self, pcinfo):
 		ip = pcinfo['ip']
@@ -320,31 +320,31 @@ class broadlink(Screen, HelpableScreen):
 		device = None
 		if self.pcinfo['system'] == SP2SP3:
 			try:
-				device = SmartDeviceCommander.sp2((ip, 80),mac)
+				device = SmartDeviceCommander.sp2((ip, 80), mac)
 			except:
 				pass
 		elif self.pcinfo['system'] == SP1:
 			try:
-				device = SmartDeviceCommander.sp1((ip, 80),mac)
+				device = SmartDeviceCommander.sp1((ip, 80), mac)
 			except:
 				pass
 		elif self.pcinfo['system'] == MP1:
 			try:
-				device = SmartDeviceCommander.mp1((ip, 80),mac)
+				device = SmartDeviceCommander.mp1((ip, 80), mac)
 			except:
 				pass
 		elif self.pcinfo['system'] == A1:
 			try:
-				device = SmartDeviceCommander.a1((ip, 80),mac)
+				device = SmartDeviceCommander.a1((ip, 80), mac)
 			except:
 				pass
 		elif self.pcinfo['system'] == RM2:
 			try:
-				device = SmartDeviceCommander.rm((ip, 80),mac)
+				device = SmartDeviceCommander.rm((ip, 80), mac)
 			except:
 				pass
 		if device is None or not device.auth():
-			self.session.openWithCallback(self.exitPlugin, MessageBox,_("Unknown error!\n"),type=MessageBox.TYPE_ERROR, timeout=5)
+			self.session.openWithCallback(self.exitPlugin, MessageBox, _("Unknown error!\n"), type=MessageBox.TYPE_ERROR, timeout=5)
 			return
 		add = ""
 		text = ""
@@ -476,7 +476,7 @@ class broadlink(Screen, HelpableScreen):
 			text = _("Current energy") + ": " + extra_text
 			#else:
 			#	text = _("Command not support!")
-		self.session.openWithCallback(self.exitPlugin, MessageBox,_("Device %s\n\n%s\n") % (self.pcinfo['name'], text),type=MessageBox.TYPE_INFO, timeout=6)
+		self.session.openWithCallback(self.exitPlugin, MessageBox, _("Device %s\n\n%s\n") % (self.pcinfo['name'], text), type=MessageBox.TYPE_INFO, timeout=6)
 
 	def showPCsList(self):
 		oldIndex = self["config"].getIndex()
@@ -506,8 +506,8 @@ class broadlink(Screen, HelpableScreen):
 	def buildPCViewItem(self, entry):
 		pc = LoadPixmap(cached=True, path=resolveFilename(SCOPE_PLUGINS, self.ppath + "/img/device.png"))
 		logo = pc
-		ip = "".join((self.ipStr,str(entry["ip"])))
-		mac = "".join((self.macStr,str(entry["mac"])))
+		ip = "".join((self.ipStr, str(entry["ip"])))
+		mac = "".join((self.macStr, str(entry["mac"])))
 		system = entry["system"]
 		if system == RM2:
 			logo = LoadPixmap(cached=True, path=resolveFilename(SCOPE_PLUGINS, self.ppath + "/img/rm2.png"))

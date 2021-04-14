@@ -19,12 +19,12 @@ import SmartDeviceCommander
 # Configuration
 config.plugins.broadlink = ConfigSubsection()
 config.plugins.broadlink.name = NoSave(ConfigText(default=_("BroadLink"), fixed_size=False))
-config.plugins.broadlink.ip = NoSave(ConfigIP(default=[192,168,1,100]))
+config.plugins.broadlink.ip = NoSave(ConfigIP(default=[192, 168, 1, 100]))
 config.plugins.broadlink.mac = NoSave(ConfigText(default="00:00:00:00:00:00"))
-config.plugins.broadlink.system = NoSave(ConfigSelection(default="0", choices=[("0",_("SP2/SP3")),("1",_("RM2")),("3",_("A1")),("2",_("MP1")),("5",_("SP1"))]))
+config.plugins.broadlink.system = NoSave(ConfigSelection(default="0", choices=[("0", _("SP2/SP3")), ("1", _("RM2")), ("3", _("A1")), ("2", _("MP1")), ("5", _("SP1"))]))
 config.plugins.broadlink.user = NoSave(ConfigText(default="administrator", fixed_size=False))
 config.plugins.broadlink.passwd = NoSave(ConfigPassword(default="password", fixed_size=False))
-config.plugins.broadlink.bqdn = NoSave(ConfigSelection(default="1", choices=[("1",_("Enable power (only SP1/SP2/SP3/MP1)")), ("2",_("Disable power (only SP1/SP2/SP3/MP1)")), ("3",_("Check sensors (only A1)")),("4",_("Check temperature (only RM2)"))]))
+config.plugins.broadlink.bqdn = NoSave(ConfigSelection(default="1", choices=[("1", _("Enable power (only SP1/SP2/SP3/MP1)")), ("2", _("Disable power (only SP1/SP2/SP3/MP1)")), ("3", _("Check sensors (only A1)")), ("4", _("Check temperature (only RM2)"))]))
 config.plugins.broadlink.close = ConfigYesNo(default=False)
 cfg = config.plugins.broadlink
 
@@ -198,7 +198,7 @@ class broadlinkEdit(Screen, ConfigListScreen, HelpableScreen):
 		ip = "%s.%s.%s.%s" % (tuple(cfg.ip.value))
 		self.readAlive(ip)
 
-	def readAlive(self,ip):
+	def readAlive(self, ip):
 		res = os.system("ping -c 1 -W 1 %s >/dev/null 2>&1" % (ip))
 		if not res:
 			self["0"].setPixmapNum(1)
@@ -255,7 +255,7 @@ class broadlinkEdit(Screen, ConfigListScreen, HelpableScreen):
 		else:
 			self.close()
 
-	def updateFinished(self,data):
+	def updateFinished(self, data):
 		if data is not None and data is True:
 			self.close()
 
