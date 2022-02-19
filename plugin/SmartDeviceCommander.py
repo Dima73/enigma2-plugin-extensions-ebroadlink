@@ -324,7 +324,7 @@ class mp1(device):
     if err == 0:
       aes = AES.new(bytes(self.key), AES.MODE_CBC, bytes(self.iv))
       payload = aes.decrypt(bytes(response[0x38:]))
-      if type(payload[0x4]) == int:
+      if isinstance(payload[0x4], int):
         state = payload[0x0e]
       else:
         state = ord(payload[0x0e])
@@ -378,7 +378,7 @@ class sp2(device):
     if err == 0:
       aes = AES.new(bytes(self.key), AES.MODE_CBC, bytes(self.iv))
       payload = aes.decrypt(bytes(response[0x38:]))
-      if type(payload[0x4]) == int:
+      if isinstance(payload[0x4], int):
         state = bool(payload[0x4])
       else:
         state = bool(ord(payload[0x4]))
@@ -414,7 +414,7 @@ class a1(device):
     if err == 0:
       aes = AES.new(bytes(self.key), AES.MODE_CBC, bytes(self.iv))
       payload = aes.decrypt(bytes(response[0x38:]))
-      if type(payload[0x4]) == int:
+      if isinstance(payload[0x4], int):
         data['temperature'] = (payload[0x4] * 10 + payload[0x5]) / 10.0
         data['humidity'] = (payload[0x6] * 10 + payload[0x7]) / 10.0
         light = payload[0x8]
@@ -467,7 +467,7 @@ class a1(device):
       data = {}
       aes = AES.new(bytes(self.key), AES.MODE_CBC, bytes(self.iv))
       payload = aes.decrypt(bytes(response[0x38:]))
-      if type(payload[0x4]) == int:
+      if isinstance(payload[0x4], int):
         data['temperature'] = (payload[0x4] * 10 + payload[0x5]) / 10.0
         data['humidity'] = (payload[0x6] * 10 + payload[0x7]) / 10.0
         data['light'] = payload[0x8]
@@ -521,7 +521,7 @@ class rm(device):
     if err == 0:
       aes = AES.new(bytes(self.key), AES.MODE_CBC, bytes(self.iv))
       payload = aes.decrypt(bytes(response[0x38:]))
-      if type(payload[0x4]) == int:
+      if isinstance(payload[0x4], int):
         temp = (payload[0x4] * 10 + payload[0x5]) / 10.0
       else:
         temp = (ord(payload[0x4]) * 10 + ord(payload[0x5])) / 10.0
