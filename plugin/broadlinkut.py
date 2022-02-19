@@ -71,7 +71,7 @@ class broadlinkUt(Screen):
 		self.remotepc[data['name']] = data
 
 	def setRemotePCAttribute(self, pcpoint, attribute, value):
-		if self.remotepc.has_key(pcpoint):
+		if pcpoint in self.remotepc:
 			self.remotepc[pcpoint][attribute] = value
 
 	def getPCsList(self):
