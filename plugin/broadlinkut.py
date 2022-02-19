@@ -27,7 +27,7 @@ class broadlinkUt(Screen):
 
 		try:
 			tree = cet_parse(XML_BTAB).getroot()
-		except Exception, e:
+		except Exception as e:
 			print("[broadlink  plugin] Error reading /etc/enigma2/broadlink.xml:", e)
 
 		def getValue(definitions, default):
@@ -45,7 +45,7 @@ class broadlinkUt(Screen):
 				data['passwd'] = getValue(pc.findall("passwd"), "password").encode("UTF-8")
 				data['bqdn'] = getValue(pc.findall("bqdn"), "0").encode("UTF-8")
 				self.remotepc[data['name']] = data
-			except Exception, e:
+			except Exception as e:
 				print("[broadlink] Error reading remotebroadlink:", e)
 
 		self.checkList = self.remotepc.keys()
@@ -98,7 +98,7 @@ class broadlinkUt(Screen):
 		try:
 			file = open(XML_BTAB, "w")
 			file.writelines(list)
-		except Exception, e:
+		except Exception as e:
 			print("[broadlink plugin] Error Saving broadlink List:", e)
 		finally:
 			if file is not None:
