@@ -1,3 +1,4 @@
+from __future__ import print_function
 from . import _
 
 import os
@@ -131,7 +132,7 @@ class broadlinkEdit(Screen, ConfigListScreen, HelpableScreen):
 		devices = SmartDeviceCommander.discover(timeout=5)
 		menu = []
 		if devices:
-			print len(devices)
+			print(len(devices))
 			for dev in devices:
 				name = "%s - %s" % (dev.type, dev.host)
 				menu.append((name, dev))
