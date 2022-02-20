@@ -1,3 +1,4 @@
+from __future__ import print_function
 from Screens.Screen import Screen
 from Components.ConfigList import ConfigListScreen
 from Components.Button import Button
@@ -26,8 +27,8 @@ class broadlinkUt(Screen):
 
 		try:
 			tree = cet_parse(XML_BTAB).getroot()
-		except Exception, e:
-			print "[broadlink  plugin] Error reading /etc/enigma2/broadlink.xml:", e
+		except Exception as e:
+			print("[broadlink  plugin] Error reading /etc/enigma2/broadlink.xml:", e)
 
 		def getValue(definitions, default):
 			ret = ""
@@ -44,8 +45,8 @@ class broadlinkUt(Screen):
 				data['passwd'] = getValue(pc.findall("passwd"), "password").encode("UTF-8")
 				data['bqdn'] = getValue(pc.findall("bqdn"), "0").encode("UTF-8")
 				self.remotepc[data['name']] = data
-			except Exception, e:
-				print "[broadlink] Error reading remotebroadlink:", e
+			except Exception as e:
+				print("[broadlink] Error reading remotebroadlink:", e)
 
 		self.checkList = self.remotepc.keys()
 		if not self.checkList:
@@ -54,7 +55,7 @@ class broadlinkUt(Screen):
 
 		self.checkList = self.remotepc.keys()
 		if not self.checkList:
-			print "\n[broadlink] self.remotepc without remotebroadlink", self.remotepc
+			print("\n[broadlink] self.remotepc without remotebroadlink", self.remotepc)
 		else:
 			self.checkList.pop()
 
@@ -70,7 +71,7 @@ class broadlinkUt(Screen):
 		self.remotepc[data['name']] = data
 
 	def setRemotePCAttribute(self, pcpoint, attribute, value):
-		if self.remotepc.has_key(pcpoint):
+		if pcpoint in self.remotepc:
 			self.remotepc[pcpoint][attribute] = value
 
 	def getPCsList(self):
@@ -97,8 +98,8 @@ class broadlinkUt(Screen):
 		try:
 			file = open(XML_BTAB, "w")
 			file.writelines(list)
-		except Exception, e:
-			print "[broadlink plugin] Error Saving broadlink List:", e
+		except Exception as e:
+			print("[broadlink plugin] Error Saving broadlink List:", e)
 		finally:
 			if file is not None:
 				file.close()

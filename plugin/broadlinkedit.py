@@ -1,3 +1,4 @@
+from __future__ import print_function
 from . import _
 
 import os
@@ -131,7 +132,7 @@ class broadlinkEdit(Screen, ConfigListScreen, HelpableScreen):
 		devices = SmartDeviceCommander.discover(timeout=5)
 		menu = []
 		if devices:
-			print len(devices)
+			print(len(devices))
 			for dev in devices:
 				name = "%s - %s" % (dev.type, dev.host)
 				menu.append((name, dev))
@@ -210,19 +211,19 @@ class broadlinkEdit(Screen, ConfigListScreen, HelpableScreen):
 		return False
 
 	def fillCfg(self):
-		if self.pcinfo.has_key('name'):
+		if 'name' in self.pcinfo:
 			cfg.name.value = self.pcinfo['name']
-		if self.pcinfo.has_key('ip'):
+		if 'ip' in self.pcinfo:
 			cfg.ip.value = self.convertIP(self.pcinfo['ip'])
-		if self.pcinfo.has_key('mac'):
+		if 'mac' in self.pcinfo:
 			cfg.mac.value = self.pcinfo['mac']
-		if self.pcinfo.has_key('system'):
+		if 'system' in self.pcinfo:
 			cfg.system.value = self.pcinfo['system']
-		if self.pcinfo.has_key('user'):
+		if 'user' in self.pcinfo:
 			cfg.user.value = self.pcinfo['user']
-		if self.pcinfo.has_key('passwd'):
+		if 'passwd' in self.pcinfo:
 			cfg.passwd.value = self.pcinfo['passwd']
-		if self.pcinfo.has_key('bqdn'):
+		if 'bqdn' in self.pcinfo:
 			cfg.bqdn.value = self.pcinfo['bqdn']
 
 	def convertIP(self, ip):
@@ -235,7 +236,7 @@ class broadlinkEdit(Screen, ConfigListScreen, HelpableScreen):
 	def ok(self):
 		current = self["config"].getCurrent()
 		name = cfg.name.value
-		if self.remotepc.has_key(name) is True:
+		if (name in self.remotepc) is True:
 			self.session.openWithCallback(self.updateConfig, MessageBox, (_("A BroadLink entry with this name already exists!\nUpdate existing entry and continue?")))
 		else:
 			self.session.openWithCallback(self.applyConfig, MessageBox, (_("Are you sure you want to add this BroadLink smart?\n")))
